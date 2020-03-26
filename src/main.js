@@ -2,6 +2,16 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+var savePosterButton = document.querySelector(".save-poster");
+var showSavedButton = document.querySelector(".show-saved");
+var showRandomButton = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
+var makeMyPosterButton = document.querySelector(".make-poster");
+var showMainButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back");
+var mainPosterSection = document.querySelector(".main-poster");
+var posterFormSection = document.querySelector(".poster-form");
+var savedPosterSection = document.querySelector(".saved-posters");
 
 // var Poster = require('../src/poster');
 
@@ -113,9 +123,15 @@ var quotes = [
 var currentPoster;
 
 // event listeners go here 👇
+showFormButton.addEventListener("click", showForm);
+showSavedButton.addEventListener("click", showsaved);
+showMainButton.addEventListener("click", showMain);
+backToMainButton.addEventListener("click", showMain);
 
 // functions and event handlers go here 👇
-
+function toggleShowForm() {
+   
+}
 // need to use the random number function to extract
 // an index identifier from each of the arrays
 
