@@ -151,12 +151,12 @@ function showMain () {
   savedPosterSection.classList.add("hidden");
 }
 
-function makePosterHandler (e) {
+function makePosterHandler (event) {
   var posterImageSrcInput = imageURLInput.value;
   var posterTitleInput = titleInput.value;
   var posterPhraseInput = quoteInput.value;
-  e.preventDefault();
-  makePoster();
+  event.preventDefault();
+  makePoster(posterImageSrcInput, posterTitleInput, posterPhraseInput);
 }
 
 // need to use the random number function to extract
@@ -193,10 +193,13 @@ function randomImage() {
 
 function makePoster(imageURL, title, quote) {
   var currentPoster = new Poster(imageURL, title, quote);
-  currentPoster = poster;
+    poster = currentPoster;
     images.push(imageURLInput.value);
     quotes.push(quoteInput.value);
     titles.push(titleInput.value);
+    posterImage.src = imageURL;
+    posterTitle.innerText = title;
+    posterQuote.innerText = quote;
     showMain();
 }
 
