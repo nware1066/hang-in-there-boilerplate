@@ -12,6 +12,9 @@ var backToMainButton = document.querySelector(".back-to-main");
 var mainPosterSection = document.querySelector(".main-poster");
 var posterFormSection = document.querySelector(".poster-form");
 var savedPosterSection = document.querySelector(".saved-posters");
+var imageURL = document.querySelector("#poster-image-url");
+var title = document.querySelector("#poster-title");
+var quote = document.querySelector("#poster-quote");
 
 // var Poster = require('../src/poster');
 
@@ -120,29 +123,30 @@ var quotes = [
 //     "Keep a joyful heart!"
 //   )
 // ];
-var currentPoster;
+var currentPoster = ;
 
 // event listeners go here 👇
 showFormButton.addEventListener("click", showForm);
 showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
+makeMyPosterButton.addEventListener("click", makePoster);
 
 // functions and event handlers go here 👇
 function showForm() {
-   mainPosterSection.classList.add('hidden');
-   posterFormSection.classList.remove('hidden');
+   mainPosterSection.classList.add("hidden");
+   posterFormSection.classList.remove("hidden");
 }
 
 function showSaved() {
-  mainPosterSection.classList.add('hidden');
-  savedPosterSection.classList.remove('hidden');
+  mainPosterSection.classList.add("hidden");
+  savedPosterSection.classList.remove("hidden");
 }
 
 function showMain () {
-  mainPosterSection.classList.remove('hidden');
-  posterFormSection.classList.add('hidden');
-  savedPosterSection.classList.add('hidden');
+  mainPosterSection.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+  savedPosterSection.classList.add("hidden");
 }
 
 // need to use the random number function to extract
@@ -160,20 +164,34 @@ function randomTitle() {
   posterTitle.innerText = titles[indexNumber];
 }
 
-randomTitle();
-
 function randomQuote() {
   var indexNumber = getRandomIndex(quotes);
   posterQuote.innerText = quotes[indexNumber];
 }
-
-randomQuote();
 
 function randomImage() {
   var indexNumber = getRandomIndex(images);
   posterImage.setAttribute("src", images[indexNumber]);
 }
 
-randomImage();
+function makeRandomPoster() {
+  randomTitle();
+  randomQuote();
+  randomImage();
+}
 
+function makePoster() {
+  if (posterFormSection.classList.include("hidden")) {
+    images.unshift(imageURL.value);
+    quote.unshift(quote.value);
+    title.unshift(title.value);
+    var currentPoster = new Poster(quote, imageURL, title);
+      this.quote = quotes[0];
+      this.imageURL = images[0];
+      this.title = titles[0];
+      showMain();
+  } else {
+    makeRandomPoster();
+  }
+}
 // end
