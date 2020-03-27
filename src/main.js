@@ -8,7 +8,7 @@ var showRandomButton = document.querySelector(".show-random");
 var showFormButton = document.querySelector(".show-form");
 var makeMyPosterButton = document.querySelector(".make-poster");
 var showMainButton = document.querySelector(".show-main");
-var backToMainButton = document.querySelector(".back");
+var backToMainButton = document.querySelector(".back-to-main");
 var mainPosterSection = document.querySelector(".main-poster");
 var posterFormSection = document.querySelector(".poster-form");
 var savedPosterSection = document.querySelector(".saved-posters");
@@ -124,14 +124,27 @@ var currentPoster;
 
 // event listeners go here 👇
 showFormButton.addEventListener("click", showForm);
-showSavedButton.addEventListener("click", showsaved);
+showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
 
 // functions and event handlers go here 👇
-function toggleShowForm() {
-   
+function showForm() {
+   mainPosterSection.classList.add('hidden');
+   posterFormSection.classList.remove('hidden');
 }
+
+function showSaved() {
+  mainPosterSection.classList.add('hidden');
+  savedPosterSection.classList.remove('hidden');
+}
+
+function showMain () {
+  mainPosterSection.classList.remove('hidden');
+  posterFormSection.classList.add('hidden');
+  savedPosterSection.classList.add('hidden');
+}
+
 // need to use the random number function to extract
 // an index identifier from each of the arrays
 
