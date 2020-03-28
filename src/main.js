@@ -140,6 +140,19 @@ function showForm() {
 function showSaved() {
   mainPosterSection.classList.add("hidden");
   savedPosterSection.classList.remove("hidden");
+  showMiniPosters();
+}
+
+function showMiniPosters() {
+  for (var i=0; i < savedPosters.length; i++) {
+    var newMiniPoster = `
+      <div class="mini-poster">
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </div>`;
+    savedPostersGrid.insertAdjacentHTML("afterbegin", newMiniPoster);
+  }
 }
 
 function showMain () {
