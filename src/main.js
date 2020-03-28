@@ -15,8 +15,7 @@ var savedPosterSection = document.querySelector(".saved-posters");
 var imageURLInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
-
-// var Poster = require('../src/poster');
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,13 +115,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
+
+var savedPosters = [];
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -132,6 +127,8 @@ showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
 makeMyPosterButton.addEventListener("click", makePosterHandler);
+showRandomButton.addEventListener("click", makeRandomPoster);
+savePosterButton.addEventListener("click", savePoster);
 
 
 // functions and event handlers go here 👇
@@ -143,6 +140,19 @@ function showForm() {
 function showSaved() {
   mainPosterSection.classList.add("hidden");
   savedPosterSection.classList.remove("hidden");
+  showMiniPosters();
+}
+
+function showMiniPosters() {
+  for (var i=0; i < savedPosters.length; i++) {
+    var newMiniPoster = `
+      <div class="mini-poster">
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </div>`;
+    savedPostersGrid.insertAdjacentHTML("afterbegin", newMiniPoster);
+  }
 }
 
 function showMain () {
@@ -152,23 +162,12 @@ function showMain () {
 }
 
 function makePosterHandler (event) {
-  var posterImageSrcInput = imageURLInput.value;
-  var posterTitleInput = titleInput.value;
-  var posterPhraseInput = quoteInput.value;
   event.preventDefault();
-  makePoster(posterImageSrcInput, posterTitleInput, posterPhraseInput);
+  makePoster(imageURLInput.value, titleInput.value, quoteInput.value);
 }
 
-// need to use the random number function to extract
-// an index identifier from each of the arrays
-
-// retrieve the associated element of the index number
-// and insert it into the poster
-
 function makeRandomPoster() {
-  randomTitle();
-  randomQuote();
-  randomImage();
+  currentPoster = new Poster(randomImage(), randomTitle(), randomQuote());
 }
 
 function getRandomIndex(array) {
@@ -178,30 +177,37 @@ function getRandomIndex(array) {
 function randomTitle() {
   var indexNumber = getRandomIndex(titles);
   posterTitle.innerText = titles[indexNumber];
+  return titles[indexNumber];
 }
 
 function randomQuote() {
   var indexNumber = getRandomIndex(quotes);
   posterQuote.innerText = quotes[indexNumber];
+  return quotes[indexNumber];
 }
 
 function randomImage() {
   var indexNumber = getRandomIndex(images);
   posterImage.setAttribute("src", images[indexNumber]);
+  return images[indexNumber];
 }
 
 
 function makePoster(imageURL, title, quote) {
-  var currentPoster = new Poster(imageURL, title, quote);
-    poster = currentPoster;
-    images.push(imageURLInput.value);
-    quotes.push(quoteInput.value);
-    titles.push(titleInput.value);
+    currentPoster = new Poster(imageURL, title, quote);
+    images.push(imageURL);
+    quotes.push(quote);
+    titles.push(title);
     posterImage.src = imageURL;
     posterTitle.innerText = title;
     posterQuote.innerText = quote;
     showMain();
 }
 
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
 
 // end
