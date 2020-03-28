@@ -192,8 +192,9 @@ function makePoster(imageURL, title, quote) {
 }
 
 function savePoster() {
-  savedPosters.push(currentPoster);
-  showSaved();
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 // end
