@@ -1,6 +1,11 @@
-# Hang In There
+# Hang In There: Liliana Weimer, Naomi Ware
 
-A boilerplate repo. 
+A boilerplate repo.
+
+This is the first paired project from Turing's Mod 1. We are attempting to create a dynamic webpage that allows users to access a random inspirational poster or create one of their own.
+
+
+
 
 ## Set Up
 
@@ -10,15 +15,29 @@ A boilerplate repo.
 4. `cd` into the repository
 5. Run `open index.html` to view it in the browser
 
+You can find this project at https://github.com/nware1066/hang-in-there-boilerplate
+
 ## Progression
 
 ### Iteration 0 - Main Page
+
+During this Iteration, we discussed the project requirements and agreed on how we would communicate and share the workload, as well as setting limits on how long we would wait to request help if we were struggling.
+
+You can check the notes on our discussion here https://gist.github.com/lilianaweimer/96f81662a0d46525d5d4969b511e8419
+
+If you would like a more detailed look at what we were doing, you can read the instructions for our project below
 
 ![screenshot of main page showing poster](/readme-imgs/homepage.png)
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote
 
+
+
 ### Iteration 1 - Switching Views
+
+We started filling out the framework elements of the project, such as querySelectors and eventListeners. We were able to get the page to display random posters and have most of the buttons functioning so that users could move between sections of the webpage.
+
+If you would like a more detailed look at what we were doing, you can read the instructions for our project below
 
 Form page:
 ![screenshot of form](/readme-imgs/form.png)
@@ -35,11 +54,18 @@ _Hint: go check out the HTML and CSS files to see how the form and saved posters
 
 ## Iteration 2 - Creating a New Poster
 
+In this Iteration we tested our ability to work together when the project was challenging. After several attempts we were able to successfully create and display a custom poster. We found pulling user input into the code to be particularly challenging.
+We then enjoyed being able to create on our functioning webpage.
+
+If you would like a more detailed look at what we were doing, you can read the instructions for our project below
+
+
 Form being filled out:
 ![screenshot of form](/readme-imgs/form.png)
 
 Once poster is saved:
 ![screenshot of result](/readme-imgs/form-result.png)
+
 
 - On the new poster form view, users should be able to fill out the three input fields and then hit the save button
 - When the save button is clicked, several things will happen:
@@ -49,6 +75,10 @@ Once poster is saved:
   - Display the newly created poster image, title, and quote in the main view
 
 ## Iteration 3 - Saving & Viewing Posters
+
+In this Iteration we were challenged to allow users to save their posters in a separate area of the webpage. This required a great deal of searching the internet for options and asking for support before we were able to make it work and we learned several new skills.
+
+If you would like a more detailed look at what we were doing, you can read the instructions for our project below
 
 Saved posters view:
 ![screenshot of saved posters section](/readme-imgs/saved.png)
