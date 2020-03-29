@@ -17,6 +17,7 @@ var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -129,9 +130,25 @@ backToMainButton.addEventListener("click", showMain);
 makeMyPosterButton.addEventListener("click", makePosterHandler);
 showRandomButton.addEventListener("click", makeRandomPoster);
 savePosterButton.addEventListener("click", savePoster);
+savedPostersGrid.addEventListener("dblclick", deleteSavedPoster);
 
 
 // functions and event handlers go here 👇
+function deleteSavedPoster(e) {
+  if (e.target.closest(".mini-poster")) {
+    var posterToDelete = e.target.closest(".mini-poster");
+    var newSavedPosters = [];
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id != posterToDelete.dataset.id) {
+        newSavedPosters.push(savedPosters[i]);
+      }
+    }
+    savedPostersGrid.innerText = "";
+    savedPosters = newSavedPosters;
+    showMiniPosters();
+  }
+}
+
 function showForm() {
    mainPosterSection.classList.add("hidden");
    posterFormSection.classList.remove("hidden");
@@ -146,7 +163,7 @@ function showSaved() {
 function showMiniPosters() {
   for (var i=0; i < savedPosters.length; i++) {
     var newMiniPoster = `
-      <div class="mini-poster">
+      <div class="mini-poster" data-id=${savedPosters[i].id}>
         <img src=${savedPosters[i].imageURL}>
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
@@ -209,5 +226,7 @@ function savePoster() {
     savedPosters.push(currentPoster);
   }
 }
+
+
 
 // end
