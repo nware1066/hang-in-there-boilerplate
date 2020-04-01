@@ -176,38 +176,24 @@ function makePosterHandler (event) {
 function makePoster(imageURL, title, quote) {
     currentPoster = new Poster(imageURL, title, quote);
     images.push(imageURL);
-    quotes.push(quote);
     titles.push(title);
+    quotes.push(quote);
     posterImage.src = imageURL;
     posterTitle.innerText = title;
     posterQuote.innerText = quote;
     showMain();
 }
 
-function makeRandomPoster() {
-  currentPoster = new Poster(randomImage(), randomTitle(), randomQuote());
-}
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomTitle() {
-  var indexNumber = getRandomIndex(titles);
-  posterTitle.innerText = titles[indexNumber];
-  return titles[indexNumber];
-}
-
-function randomQuote() {
-  var indexNumber = getRandomIndex(quotes);
-  posterQuote.innerText = quotes[indexNumber];
-  return quotes[indexNumber];
-}
-
-function randomImage() {
-  var indexNumber = getRandomIndex(images);
-  posterImage.setAttribute("src", images[indexNumber]);
-  return images[indexNumber];
+function makeRandomPoster() {
+  var imageIndexNumber = getRandomIndex(images);
+  var titleIndexNumber = getRandomIndex(titles);
+  var quoteIndexNumber = getRandomIndex(quotes);
+  currentPoster = new Poster(images[imageIndexNumber], titles[titleIndexNumber], quotes[quoteIndexNumber]);
+  setPoster();
 }
 
 function savePoster() {
@@ -226,4 +212,10 @@ function deleteSavedPoster(e) {
     }
     showMiniPosters();
   }
+}
+
+function setPoster() {
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 }
