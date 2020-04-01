@@ -178,10 +178,11 @@ function makePoster(imageURL, title, quote) {
     images.push(imageURL);
     titles.push(title);
     quotes.push(quote);
-    posterImage.src = imageURL;
-    posterTitle.innerText = title;
-    posterQuote.innerText = quote;
+    // posterImage.src = imageURL;
+    // posterTitle.innerText = title;
+    // posterQuote.innerText = quote;
     showMain();
+    setPoster();
 }
 
 function getRandomIndex(array) {
